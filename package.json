@@ -1,0 +1,26 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "keywords": [
+    "Mytube"
+  ],
+  "author": "ninad",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.3.0",
+    "cloudinary": "^2.11.0",
+    "dotenv": "^18.0.4",
+    "express": "^5.2.1",
+    "express-fileupload": "^1.5.2",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.10.2",
+    "nodemon": "^3.1.14"
+  }
+}

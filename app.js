@@ -1,0 +1,43 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const userRoutes = require('../api/routes/User');
+const videoRoutes = require('../api/routes/Video');
+const commentRoutes = require('../api/routes/Comment');
+const bodyParser = require('body-parser');
+const app = express();
+const fileUpload = require('express-fileupload');
+require('dotenv').config();
+
+
+const connectwithdatabase = async()=>{
+    try {
+        const res = await mongoose.connect(process.env.MONGO_URL)
+        console.log('connected with database...');
+        
+    } catch (err) {
+        console.log(err);
+        
+    }
+}
+
+connectwithdatabase()
+
+app.use(bodyParser.json())
+app.use(fileUpload({
+    useTempFiles : true,
+    tempFileDir : '/tmp/'
+}));
+
+
+app.use('/user' , userRoutes);
+app.use('/video' , videoRoutes);
+app.use('/comment' , commentRoutes);
+
+app.get('/test' , (req, res)=>{
+    res.status(200).json({
+        msg : 'test api'
+    })
+})
+
+
+module.exports = app ;
