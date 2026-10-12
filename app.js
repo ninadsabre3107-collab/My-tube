@@ -6,6 +6,7 @@ const commentRoutes = require('./routes/Comment');
 const bodyParser = require('body-parser');
 const app = express();
 const fileUpload = require('express-fileupload');
+const cors = require('cors');
 require('dotenv').config();
 
 
@@ -22,6 +23,7 @@ const connectwithdatabase = async()=>{
 
 connectwithdatabase()
 
+app.use(cors())
 app.use(bodyParser.json())
 app.use(fileUpload({
     useTempFiles : true,
